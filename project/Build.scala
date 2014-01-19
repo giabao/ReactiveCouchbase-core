@@ -9,7 +9,7 @@ object ApplicationBuild extends Build {
   val appScalaBinaryVersion = "2.10"
   val appScalaCrossVersions = Seq("2.10.2")
 
-  val local: Project.Initialize[Option[sbt.Resolver]] = version { (version: String) =>
+  val local: Def.Initialize[Option[sbt.Resolver]] = version { (version: String) =>
     val localPublishRepo = "./repository"
     if(version.trim.endsWith("SNAPSHOT"))
       Some(Resolver.file("snapshots", new File(localPublishRepo + "/snapshots")))
